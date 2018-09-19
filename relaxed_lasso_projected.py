@@ -75,6 +75,15 @@ G = np.concatenate((Gupper, Glower))
 
 g = G.dot(b)
 
+#===================================
+# Project
+#===================================
+Q , _, _ = sci.linalg.svd(F, False)
+
+Q = Q[:,0:5]
+
+F = Q.T.dot(F)
+g = Q.T.dot(g)
 
 w = np.zeros(x_true.shape)
 for i in range(maxiter):
